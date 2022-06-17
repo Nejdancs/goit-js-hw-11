@@ -1,4 +1,4 @@
-import './scroll-form';
+import './scroll-form.js';
 import refs from './refs';
 import getImages from './fetch-service';
 import createCards from './create-cards';
