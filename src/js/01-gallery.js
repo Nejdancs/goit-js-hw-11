@@ -14,10 +14,10 @@ const lightbox = new SimpleLightbox('.gallery a', {
   overlayOpacity: 0.8,
 });
 
-refs.form.addEventListener('submit', onSearh);
+refs.form.addEventListener('submit', onSearch);
 refs.loadBtn.addEventListener('click', onLoadBtn);
 
-function onSearh(e) {
+function onSearch(e) {
   e.preventDefault();
 
   const {
@@ -32,6 +32,8 @@ function onSearh(e) {
   page = 1;
 
   if (!valueSearchQuery) {
+    Notify.failure("You didn't enter anything.");
+
     return;
   }
 
