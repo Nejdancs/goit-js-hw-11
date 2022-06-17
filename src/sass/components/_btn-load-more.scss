@@ -1,0 +1,17 @@
+.load-more {
+  display: block;
+  margin: 0 auto;
+  padding: 10px 20px;
+  height: 40px;
+  border-radius: 7px;
+
+  border: none;
+  background-color: #ccc;
+  cursor: pointer;
+
+  transition: background-color 200ms linear;
+}
+
+.load-more:hover {
+  background-color: #e3dc12;
+}
