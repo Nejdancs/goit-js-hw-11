@@ -1,5 +1,6 @@
 import refs from './refs';
 import getImages from './fetch-service';
+import createCards from './create-cards';
 import { Notify } from 'notiflix/build/notiflix-notify-aio';
 import SimpleLightbox from 'simplelightbox';
 import 'simplelightbox/dist/simple-lightbox.min.css';
@@ -83,40 +84,6 @@ async function renderImages(value, page) {
   } catch (error) {
     console.log(error.message);
   }
-}
-
-function createCards(imagesData) {
-  return imagesData
-    .map(imageData => {
-      const {
-        webformatURL,
-        largeImageURL,
-        tags,
-        likes,
-        views,
-        comments,
-        downloads,
-      } = imageData;
-
-      return `<div class="photo-card">
-  <a href="${largeImageURL}"><img src="${webformatURL}" alt="${tags}" loading="lazy" /></a>
-  <div class="info">
-    <p class="info-item">
-      <b>Likes</b>${likes}
-    </p>
-    <p class="info-item">
-      <b>Views</b>${views}
-    </p>
-    <p class="info-item">
-      <b>Comments</b>${comments}
-    </p>
-    <p class="info-item">
-      <b>Downloads</b>${downloads}
-    </p>
-  </div>
-</div>`;
-    })
-    .join('');
 }
 
 function scroll() {
