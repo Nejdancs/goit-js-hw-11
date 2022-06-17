@@ -10,23 +10,24 @@
   transition: box-shadow 200ms linear;
 }
 
-.photo-card:nth-child(4n + 1) {
-  animation: anim 250ms linear 100ms forwards;
-}
-.photo-card:nth-child(4n + 2) {
-  animation: anim 250ms linear 200ms forwards;
-}
-.photo-card:nth-child(4n + 3) {
-  animation: anim 250ms linear 300ms forwards;
-}
-.photo-card:nth-child(4n + 4) {
-  animation: anim 250ms linear 400ms forwards;
-}
+@media screen and (min-width: 1321px) {
+  .photo-card:nth-child(4n + 1) {
+    animation: anim 250ms linear 100ms forwards;
+  }
+  .photo-card:nth-child(4n + 2) {
+    animation: anim 250ms linear 200ms forwards;
+  }
+  .photo-card:nth-child(4n + 3) {
+    animation: anim 250ms linear 300ms forwards;
+  }
+  .photo-card:nth-child(4n + 4) {
+    animation: anim 250ms linear 400ms forwards;
+  }
 
-.photo-card:hover {
-  box-shadow: 4px 4px 8px 0px rgba(34, 60, 80, 0.2);
+  .photo-card:hover {
+    box-shadow: 4px 4px 8px 0px rgba(34, 60, 80, 0.2);
+  }
 }
-
 .photo-card img {
   height: 200px;
   object-fit: cover;
@@ -60,5 +61,69 @@
   100% {
     transform: translateY(0);
     opacity: 1;
+  }
+}
+
+@media screen and (max-width: 1320px) {
+  .photo-card {
+    width: calc(100% / 3 - 20px);
+    margin: 10px;
+  }
+
+  .photo-card img {
+    height: 150px;
+  }
+
+  .info-item {
+    font-size: 12px;
+  }
+
+  .photo-card:nth-child(3n + 1) {
+    animation: anim 250ms linear 100ms forwards;
+  }
+  .photo-card:nth-child(3n + 2) {
+    animation: anim 250ms linear 200ms forwards;
+  }
+  .photo-card:nth-child(3n + 3) {
+    animation: anim 250ms linear 300ms forwards;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .photo-card {
+    width: calc(100% / 2 - 16px);
+    margin: 8px;
+  }
+
+  .photo-card img {
+    height: 130px;
+  }
+
+  .info-item {
+    font-size: 12px;
+  }
+
+  .photo-card:nth-child(2n + 1) {
+    animation: anim 250ms linear 100ms forwards;
+  }
+  .photo-card:nth-child(2n + 2) {
+    animation: anim 250ms linear 200ms forwards;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .photo-card {
+    width: 100%;
+  }
+  .photo-card img {
+    height: 250px;
+  }
+  .info {
+    font-size: 12px;
+    justify-content: space-evenly;
+  }
+
+  .photo-card {
+    animation: anim 250ms linear 100ms forwards;
   }
 }

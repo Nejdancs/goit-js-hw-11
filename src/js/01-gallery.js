@@ -8,6 +8,7 @@ import 'simplelightbox/dist/simple-lightbox.min.css';
 let page;
 let totalPages;
 let valueSearchQuery;
+let cordLastItems;
 
 const lightbox = new SimpleLightbox('.gallery a', {
   captionsData: 'alt',
@@ -46,6 +47,7 @@ function onSearch(e) {
 function onLoadBtn() {
   page += 1;
 
+  cordLastItems = refs.gallery.lastElementChild.getBoundingClientRect().top;
   hideLoadBtn();
 
   if (page > totalPages) {
@@ -87,15 +89,13 @@ async function renderImages(value, page) {
 }
 
 function scroll() {
-  const { height: cardHeight } =
-    refs.gallery.firstElementChild.getBoundingClientRect();
   const { height: formHeight } = refs.form.getBoundingClientRect();
   let topScroll;
 
   if (page === 1) {
     topScroll = formHeight;
   } else {
-    topScroll = cardHeight * 2;
+    topScroll = cordLastItems;
   }
 
   window.scrollBy({
