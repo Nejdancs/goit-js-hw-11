@@ -39,13 +39,12 @@ function onSearh(e) {
 }
 
 function onScroll() {
-  var block = refs.gallery;
-  console.log(Date.now());
+  const block = refs.gallery;
 
-  var contentHeight = block.offsetHeight;
-  var yOffset = window.pageYOffset;
-  var window_height = window.innerHeight;
-  var y = yOffset + window_height;
+  const contentHeight = block.offsetHeight;
+  const yOffset = window.pageYOffset;
+  const window_height = window.innerHeight;
+  const y = yOffset + window_height;
 
   if (y >= contentHeight) {
     page += 1;
