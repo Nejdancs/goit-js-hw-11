@@ -85,6 +85,8 @@ async function renderImages(value, page) {
     showLoadBtn();
   } catch (error) {
     console.log(error.message);
+    toggleSpiner();
+    Notify.failure('Oops, something went wrong. Please try again.');
   }
 }
 
