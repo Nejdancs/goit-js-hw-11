@@ -35,7 +35,7 @@ function onSearch(e) {
   page = 1;
 
   if (!valueSearchQuery) {
-    Notify.failure("You didn't enter anything.");
+    Notify.info("You didn't enter anything.");
 
     return;
   }
@@ -52,7 +52,7 @@ function onLoadBtn() {
   hideLoadBtn();
 
   if (page > totalPages) {
-    Notify.failure(
+    Notify.warning(
       "We're sorry, but you've reached the end of search results."
     );
     return;
@@ -77,7 +77,7 @@ async function renderImages(value, page) {
 
       return;
     } else if (page === 1) {
-      Notify.success(`Hooray! We found ${totalHits} images.`);
+      Notify.info(`Hooray! We found ${totalHits} images.`);
     }
 
     refs.gallery.insertAdjacentHTML('beforeend', createCards(hits));

@@ -32,7 +32,7 @@ function onSearch(e) {
   page = 1;
 
   if (!valueSearchQuery) {
-    Notify.failure("You didn't enter anything.");
+    Notify.info("You didn't enter anything.");
     return;
   }
 
@@ -54,7 +54,7 @@ function onScroll() {
     removeEventListener('scroll', onScroll);
 
     if (page > totalPages) {
-      Notify.failure(
+      Notify.warning(
         "We're sorry, but you've reached the end of search results."
       );
 
@@ -81,7 +81,7 @@ async function renderImages(value, page) {
 
       return;
     } else if (page === 1) {
-      Notify.success(`Hooray! We found ${totalHits} images.`);
+      Notify.info(`Hooray! We found ${totalHits} images.`);
     }
 
     refs.gallery.insertAdjacentHTML('beforeend', createCards(hits));
@@ -90,6 +90,8 @@ async function renderImages(value, page) {
     addEventListener('scroll', onScroll);
   } catch (error) {
     console.log(error.message);
+    toggleSpiner();
+    Notify.failure('Oops, something went wrong. Please try again.');
   }
 }
 
