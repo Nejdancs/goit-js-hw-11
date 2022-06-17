@@ -60,32 +60,35 @@ function onLoadBtn() {
   renderImages(valueSearchQuery, page);
 }
 
-async function renderImages(value, page) {
-  try {
-    toggleSpiner();
+function renderImages(value, page) {
+  toggleSpiner();
 
-    const { hits, totalHits } = await getImages(value, page);
+  // const { hits, totalHits } = await getImages(value, page);
 
-    toggleSpiner();
-    checkTotalPages(totalHits);
+  getImages(value, page)
+    .then(({ hits, totalHits }) => {
+      checkTotalPages(totalHits);
 
-    if (totalHits === 0) {
-      Notify.failure(
-        'Sorry, there are no images matching your search query. Please try again.'
-      );
+      if (totalHits === 0) {
+        Notify.failure(
+          'Sorry, there are no images matching your search query. Please try again.'
+        );
 
-      return;
-    } else if (page === 1) {
-      Notify.success(`Hooray! We found ${totalHits} images.`);
-    }
+        return;
+      } else if (page === 1) {
+        Notify.success(`Hooray! We found ${totalHits} images.`);
+      }
 
-    refs.gallery.insertAdjacentHTML('beforeend', createCards(hits));
-    lightbox.refresh();
-    scroll();
-    showLoadBtn();
-  } catch (error) {
-    console.log(error.message);
-  }
+      refs.gallery.insertAdjacentHTML('beforeend', createCards(hits));
+      lightbox.refresh();
+      scroll();
+      showLoadBtn();
+    })
+    .catch(error => {
+      console.log(error.message);
+      Notify.failure('Oops, something went wrong. Please try again.');
+    })
+    .finally(() => toggleSpiner());
 }
 
 function scroll() {
