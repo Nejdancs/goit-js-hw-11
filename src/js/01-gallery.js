@@ -50,13 +50,9 @@ function onLoadBtn() {
 
   cordLastItems = refs.gallery.lastElementChild.getBoundingClientRect().top;
   hideLoadBtn();
-
-  if (page > totalPages) {
-    Notify.warning(
-      "We're sorry, but you've reached the end of search results."
-    );
-    return;
-  }
+  console.log(page);
+  console.log(totalPages);
+  console.log(page >= totalPages);
 
   renderImages(valueSearchQuery, page);
 }
@@ -83,6 +79,13 @@ async function renderImages(value, page) {
     refs.gallery.insertAdjacentHTML('beforeend', createCards(hits));
     lightbox.refresh();
     scroll();
+
+    if (page >= totalPages) {
+      Notify.warning(
+        "We're sorry, but you've reached the end of search results."
+      );
+      return;
+    }
     showLoadBtn();
   } catch (error) {
     console.log(error.message);
